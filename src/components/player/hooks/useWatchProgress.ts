@@ -23,7 +23,8 @@ export const useWatchProgress = (
     malId?: number,
     dayIndex?: number,
     tmdbId?: number,
-    isInPictureInPicture: boolean = false
+    isInPictureInPicture: boolean = false,
+    title?: string
 ) => {
     const [resumePosition, setResumePosition] = useState<number | null>(null);
     const [savedDuration, setSavedDuration] = useState<number | null>(null);
@@ -46,6 +47,7 @@ export const useWatchProgress = (
     const dayIndexRef = useRef(dayIndex);
     const tmdbIdRef = useRef(tmdbId);
     const isInPictureInPictureRef = useRef(isInPictureInPicture);
+    const titleRef = useRef(title);
 
     // Sync refs
     useEffect(() => {
@@ -57,7 +59,8 @@ export const useWatchProgress = (
         dayIndexRef.current = dayIndex;
         tmdbIdRef.current = tmdbId;
         isInPictureInPictureRef.current = isInPictureInPicture;
-    }, [imdbId, season, episode, releaseDate, malId, dayIndex, tmdbId, isInPictureInPicture]);
+        titleRef.current = title;
+    }, [imdbId, season, episode, releaseDate, malId, dayIndex, tmdbId, isInPictureInPicture, title]);
 
     // Reset scrobble flag when content changes
     useEffect(() => {
@@ -174,6 +177,7 @@ export const useWatchProgress = (
                     const currentMalId = malIdRef.current;
                     const currentDayIndex = dayIndexRef.current;
                     const currentTmdbId = tmdbIdRef.current;
+                    const currentTitle = titleRef.current;
 
                     if (type === 'series' && currentImdbId && currentSeason !== undefined && currentEpisode !== undefined) {
                         watchedService.markEpisodeAsWatched(
@@ -189,7 +193,7 @@ export const useWatchProgress = (
                             currentTmdbId
                         );
                     } else if (type === 'movie' && currentImdbId) {
-                        watchedService.markMovieAsWatched(currentImdbId, new Date(), currentMalId, currentTmdbId, title);
+                        watchedService.markMovieAsWatched(currentImdbId, new Date(), currentMalId, currentTmdbId, currentTitle);
                     }
                 }
             } catch (error) {

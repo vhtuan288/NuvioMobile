@@ -1,8 +1,10 @@
 import { mmkvStorage } from '../mmkvStorage';
 import { MalApiService } from './MalApi';
+import { MalAuth } from './MalAuth';
 import { MalListStatus, MalAnimeNode } from '../../types/mal';
 import { catalogService } from '../catalogService';
 import { ArmSyncService } from './ArmSyncService';
+import { logger } from '../../utils/logger';
 import axios from 'axios';
 
 const MAPPING_PREFIX = 'mal_map_';

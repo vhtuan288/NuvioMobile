@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useCallback } from 'react';
+import React, { useEffect, useRef, useState, useCallback, useMemo } from 'react';
 import { View, StatusBar, StyleSheet, Animated, Dimensions, ActivityIndicator } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -271,7 +271,9 @@ const KSPlayerCore: React.FC = () => {
     releaseDate,
     currentMalId,
     currentDayIndex,
-    currentTmdbId
+    currentTmdbId,
+    false, // KSPlayer doesn't support PiP yet
+    metadata?.name
   );
 
   // Gestures

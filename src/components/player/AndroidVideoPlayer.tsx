@@ -251,7 +251,8 @@ const AndroidVideoPlayer: React.FC = () => {
     currentMalId,
     currentDayIndex,
     currentTmdbId,
-    isInPictureInPicture || isPiPTransitionPending
+    isInPictureInPicture || isPiPTransitionPending,
+    metadata?.name
   );
 
   const gestureControls = usePlayerGestureControls({
