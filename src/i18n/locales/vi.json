@@ -462,6 +462,21 @@
         "cancel": "Huỷ",
         "remove": "Xoá"
     },
+    "parentalGuide": {
+        "labels": {
+            "nudity": "Cảnh khoả thân",
+            "violence": "Bạo lực",
+            "profanity": "Ngôn từ thô tục",
+            "alcohol": "Chất kích thích",
+            "frightening": "Cảnh đáng sợ"
+        },
+        "severity": {
+            "severe": "Nặng",
+            "moderate": "Vừa phải",
+            "mild": "Nhẹ",
+            "none": "Không có"
+        }
+    },
     "addons": {
         "title": "Addon",
         "reorder_mode": "Sắp xếp lại",
